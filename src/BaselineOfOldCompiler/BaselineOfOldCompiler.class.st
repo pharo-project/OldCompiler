@@ -22,7 +22,9 @@ BaselineOfOldCompiler >> postload: x [
 	MCMethodDefinition initializersEnabled: true.
 	ParseNode initialize.
 	VariableNode initialize.
-	Decompiler initialize
+	Decompiler initialize.
+	Scanner initialize.
+	MessageNode initialize.
 ]
 
 { #category : #baselines }

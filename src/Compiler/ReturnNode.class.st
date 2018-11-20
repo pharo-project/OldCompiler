@@ -72,11 +72,6 @@ ReturnNode >> expr: e encoder: encoder sourceRange: range [
 ]
 
 { #category : #testing }
-ReturnNode >> isReturn [
-	^true
-]
-
-{ #category : #testing }
 ReturnNode >> isReturnSelf [
 
 	^expr == NodeSelf

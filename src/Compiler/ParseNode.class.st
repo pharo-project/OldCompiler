@@ -305,11 +305,6 @@ ParseNode >> isOnlySubnodeOf: aSubtree "<ParseNode>" in: aParseTree [ "<ParseNod
 ]
 
 { #category : #testing }
-ParseNode >> isReturn [
-	^false
-]
-
-{ #category : #testing }
 ParseNode >> isReturnSelf [
 
 	^false

@@ -378,7 +378,7 @@ LegacyEncoder >> interactive [
 
 { #category : #temps }
 LegacyEncoder >> isAnalyzedMethodDefinedByATrait [
-	^( class traitOrClassOfSelector: #testReplaceFromToWithStartingAt ) isTrait
+	^( class lookupSelector: selector ) origin isTrait
 ]
 
 { #category : #encoding }
@@ -584,6 +584,20 @@ LegacyEncoder >> temps: tempVars literals: lits class: cl [
 	sourceRanges := Dictionary new: 32.
 	globalSourceRanges := OrderedCollection new: 32.
 
+]
+
+{ #category : #'vmmaker-compatibility' }
+LegacyEncoder >> tempsAndBlockArgs [
+	| tempNodes |
+	tempNodes := OrderedCollection new.
+	scopeTable associationsDo:
+		[:assn | | var |
+		var := assn value.
+		(var isTemp
+		 and: [var isMethodArg not
+		 and: [var scope = 0 or: [var scope = -1]]]) ifTrue:
+			[tempNodes add: var]].
+	^tempNodes
 ]
 
 { #category : #encoding }
